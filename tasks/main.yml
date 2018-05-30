@@ -1,0 +1,13 @@
+---
+# tasks file for at
+- name: install software
+  package:
+    name: at
+
+- name: start and enable software
+  service:
+    name: atd
+    state: started
+    enabled: true
+  when:
+    - ansible_virtualization_type != "docker"
