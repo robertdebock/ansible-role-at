@@ -27,7 +27,7 @@ Dependencies
 
 This role can be used to prepare your system:
 
-- robertdebock.bootstrap
+- [robertdebock.bootstrap](https://travis-ci.org/robertdebock/ansible-role-bootstrap)
 
 Download the dependencies by issuing this command:
 ```
@@ -77,4 +77,4 @@ Apache License, Version 2.0
 Author Information
 ------------------
 
-Robert de Bock <robert@meinit.nl>
+Robert de Bock](https://robertdebock.nl/) <robert@meinit.nl>
