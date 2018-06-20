@@ -8,14 +8,14 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: sudo-pair-debian-buster
-    image: debian:buster
+  - name: sudo-pair-fedora-latest
+    image: fedora:latest
 provisioner:
   name: ansible
   lint:
     name: ansible-lint
 scenario:
-  name: debian-buster
+  name: fedora-latest
 verifier:
   name: goss
   lint:

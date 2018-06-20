@@ -10,7 +10,7 @@ Context
 This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
 
 Here is an overview of related roles:
-![dependencies](https://raw.githubusercontent.com/robertdebock/robertdebock.github.io/artifacts/at.png "Dependency")
+![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/at.png "Dependency")
 
 Requirements
 ------------
@@ -41,19 +41,19 @@ This role has been tested against the following distributions and Ansible versio
 
 |distribution|ansible 2.3|ansible 2.4|ansible 2.5|
 |------------|-----------|-----------|-----------|
-|alpine-3.6|no|no|no|
-|alpine-3.7|yes|yes|yes|
+|alpine-latest|no|no|no|
+|alpine-edge|yes|yes|yes|
 |archlinux|no|no|no|
 |centos-6|no|no|no|
-|centos-7|no|no|no|
-|debian-buster|yes|yes|yes|
-|debian-stretch|no|no|no|
-|fedora-27|yes|yes|yes|
-|fedora-28|yes|yes|yes|
-|opensuse-42.2|no|no|no|
-|opensuse-42.3|no|no|no|
+|centos-latest|no|no|no|
+|debian-stable|yes|yes|yes|
+|debian-latest|no|no|no|
+|fedora-latest|yes|yes|yes|
+|fedora-rawhide|yes|yes|yes|
+|opensuse-leap|no|no|no|
+|opensuse-tumbleweed|no|no|no|
 |ubuntu-artful|yes|yes|yes|
-|ubuntu-bionic|yes|yes|yes|
+|ubuntu-latest|yes|yes|yes|
 
 Example Playbook
 ----------------
