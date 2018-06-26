@@ -8,7 +8,7 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: sudo-pair-ubuntu-latest
+  - name: at-ubuntu-latest
     image: ubuntu:latest
 provisioner:
   name: ansible
