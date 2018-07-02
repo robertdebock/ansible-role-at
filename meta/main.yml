@@ -1,19 +1,34 @@
 ---
 galaxy_info:
   author: Robert de Bock
-  description: Provides and enables at for your system.
+  role_name: at
+  description: at, batch, atq, atrm - queue, examine or delete jobs for later execution
   license: Apache License, Version 2.0
-  min_ansible_version: 2.3
+  min_ansible_version: 2.4
   min_ansible_container_version: 0.2.0
 
   platforms:
     - name: Alpine
       versions:
         - all
+    - name: ArchLinux
+      version:
+        - all
+    - name: CentOS
+      version:
+        - 6
+        - 7
     - name: Debian
       versions:
         - all
+    - name: EL
+      version:
+        - 6
+        - 7
     - name: Fedora
+      versions:
+        - all
+    - name: OpenSUSE
       versions:
         - all
     - name: Ubuntu
@@ -22,15 +37,17 @@ galaxy_info:
         - bionic
 
   galaxy_tags:
+    - alpine
     - at
     - atd
     - atq
+    - batch
+    - centos
+    - debian
+    - fedora
+    - rhel
     - scheduling
-    - Alpine
-    - CentOS
-    - Debian
-    - Fedora
-    - RHEL
-    - Ubuntu
+    - system
+    - ubuntu
 
 dependencies: []
