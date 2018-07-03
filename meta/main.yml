@@ -45,6 +45,7 @@ galaxy_info:
     - centos
     - debian
     - fedora
+    - opensuse
     - rhel
     - scheduling
     - system
