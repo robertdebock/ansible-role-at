@@ -3,6 +3,7 @@
 - name: install software
   package:
     name: at
+    state: present
 
 - name: start and enable software
   service:
