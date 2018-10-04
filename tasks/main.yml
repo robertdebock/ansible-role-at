@@ -1,11 +1,11 @@
 ---
 # tasks file for at
-- name: install software
+- name: install at software
   package:
     name: at
-    state: present
+    state: "{{ at_package_state }}"
 
-- name: start and enable software
+- name: start and enable at software
   service:
     name: atd
     state: started
