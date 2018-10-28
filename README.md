@@ -5,51 +5,65 @@ at
 
 Installs and enables at for your system.
 
-[Unit tests](https://travis-ci.org/robertdebock/ansible-role-bootstrap) are done on every commit and periodically.
 
-If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-bootstrap/issues)
+Example Playbook
+----------------
 
-To test this role locally please use [Molecule](https://github.com/metacloud/molecule):
+This example is taken from `molecule/default/playbook.yml`:
 ```
-pip install molecule
-molecule test
+---
+- name: Converge
+  hosts: all
+  become: true
+  gather_facts: false
+
+  roles:
+    - role: robertdebock.bootstrap
+    - role: ansible-role-at
+
 ```
-There are many scenarios available, please have a look in the `molecule/` directory.
+
+Role Variables
+--------------
+
+These variables are set in `defaults/main.yml`:
+```
+---
+# defaults file for at
+
+# To update packages installed by this role, set `at_package_state` to `latest`.
+at_package_state: present
+
+```
+
+Requirements
+------------
+
+- Access to a repository containing packages, likely on the internet.
+- A recent version of Ansible. (Tests run on the last 3 release of Ansible.)
+
+These roles can be installed to ensure all requirements are met:
+
+- none
+
+To install all requirements at once: `ansible-galaxy install -r requirements.yml`.
 
 Context
 -------
+
 This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://robertdebock.nl/) for further information.
 
 Here is an overview of related roles:
 ![dependencies](https://raw.githubusercontent.com/robertdebock/drawings/artifacts/at.png "Dependency")
 
-Requirements
-------------
-
-Access to a repository containing packages, likely on the internet.
-
-Role Variables
---------------
-
-None known.
-
-Dependencies
-------------
-
-This role can be used to prepare your system:
-
-- [robertdebock.bootstrap](https://travis-ci.org/robertdebock/ansible-role-bootstrap)
-
-Download the dependencies by issuing this command:
-```
-ansible-galaxy install --role-file requirements.yml
-```
 
 Compatibility
 -------------
 
 This role has been tested against the following distributions and Ansible version:
 
+|distribution|ansible 2.4|ansible 2.5|ansible 2.6|ansible 2.7|ansible devel|
+|------------|-----------|-----------|-----------|-----------|-------------|
 |alpine-edge*|yes|yes|yes|yes|yes*|
 |alpine-latest|yes|yes|yes|yes|yes*|
 |archlinux|yes|yes|yes|yes|yes*|
@@ -68,24 +82,26 @@ This role has been tested against the following distributions and Ansible versio
 
 A single star means the build may fail, it's marked as an experimental build.
 
-Example Playbook
-----------------
+Testing
+-------
 
-The simplest way possible:
+[Unit tests](https://travis-ci.org/robertdebock/ansible-role-at) are done on every commit and periodically.
+
+If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-at/issues)
+
+To test this role locally please use [Molecule](https://github.com/metacloud/molecule):
 ```
-- hosts: servers
-
-  roles:
-    - robertdebock.bootstrap
-    - robertdebock.at
+pip install molecule
+molecule test
 ```
+There are many specific scenarios available, please have a look in the `molecule/` directory.
 
-Install this role using `galaxy install robertdebock.at`.
 
 License
 -------
 
-Apache License, Version 2.0
+Apache-2.0
+
 
 Author Information
 ------------------
