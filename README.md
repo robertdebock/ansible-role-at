@@ -3,8 +3,7 @@ at
 
 [![Build Status](https://travis-ci.org/robertdebock/ansible-role-at.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-at)
 
-Installs and enables at for your system.
-
+The purpose of this role is to install and configure at on your system.
 
 Example Playbook
 ----------------
