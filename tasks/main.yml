@@ -4,6 +4,9 @@
   package:
     name: at
     state: "{{ at_package_state }}"
+  register: at_install_at_software
+  until: at_install_at_software is succeeded
+  retries: 3
 
 - name: start and enable at software
   service:
