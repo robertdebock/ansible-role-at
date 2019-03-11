@@ -30,9 +30,6 @@ These variables are set in `defaults/main.yml`:
 ```yaml
 ---
 # defaults file for at
-
-# To update packages installed by this role, set `at_package_state` to `latest`.
-at_package_state: present
 ```
 
 Requirements

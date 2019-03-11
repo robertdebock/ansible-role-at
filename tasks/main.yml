@@ -3,7 +3,7 @@
 - name: install at software
   package:
     name: at
-    state: "{{ at_package_state }}"
+    state: present
   register: at_install_at_software
   until: at_install_at_software is succeeded
   retries: 3
