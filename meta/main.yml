@@ -41,7 +41,6 @@ galaxy_info:
     - atq
     - batch
     - centos
-    - debian
     - fedora
     - opensuse
     - rhel
