@@ -44,6 +44,5 @@ galaxy_info:
     - rhel
     - scheduling
     - system
-    - ubuntu
 
 dependencies: []
