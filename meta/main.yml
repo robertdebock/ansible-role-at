@@ -41,7 +41,7 @@ galaxy_info:
     - atq
     - batch
     - centos
-    - rhel
+    - redhat
     - scheduling
     - system
 
