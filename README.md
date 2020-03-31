@@ -5,7 +5,7 @@ Install and configure at on your system.
 
 |Travis|GitHub|Quality|Downloads|
 |------|------|-------|---------|
-|[![travis](https://travis-ci.org/robertdebock/ansible-role-at.svg?branch=master)](https://travis-ci.org/robertdebock/ansible-role-at)|[![github](https://github.com/robertdebock/ansible-role-at/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-at/actions)|![quality](https://img.shields.io/ansible/quality/27170)|![downloads](https://img.shields.io/ansible/role/d/27170)|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-at.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-at)|[![github](https://github.com/robertdebock/ansible-role-at/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-at/actions)|[![quality](https://img.shields.io/ansible/quality/27170)](https://galaxy.ansible.com/robertdebock/at)|[![downloads](https://img.shields.io/ansible/role/d/27170)](https://galaxy.ansible.com/robertdebock/at)|
 
 Example Playbook
 ----------------
@@ -107,7 +107,7 @@ The minimum version of Ansible required is 2.8 but tests have been done to:
 Testing
 -------
 
-[Unit tests](https://travis-ci.org/robertdebock/ansible-role-at) are done on every commit, pull request, release and periodically.
+[Unit tests](https://travis-ci.com/robertdebock/ansible-role-at) are done on every commit, pull request, release and periodically.
 
 If you find issues, please register them in [GitHub](https://github.com/robertdebock/ansible-role-at/issues)
 
