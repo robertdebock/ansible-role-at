@@ -5,3 +5,4 @@
 repository:
   description: Install and configure at on your system.
   homepage: https://robertdebock.nl/
+  topics: at, atd, atq, batch, scheduling, system, hacktoberfest
