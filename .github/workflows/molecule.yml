@@ -36,18 +36,6 @@ jobs:
         distro:
           - image: "amazonlinux"
             tag: "latest"
-          - image: "debian"
-            tag: "latest"
-          - image: "debian"
-            tag: "bookworm"
-          - image: "enterpriselinux"
-            tag: "latest"
-          - image: "fedora"
-            tag: "latest"
-          - image: "ubuntu"
-            tag: "jammy"
-          - image: "ubuntu"
-            tag: "latest"
     steps:
       - name: checkout
         uses: actions/checkout@v5
@@ -78,6 +66,15 @@ jobs:
           python -m pip install --upgrade pip
           pip3 install ansible molecule molecule-plugins[docker] docker
 
+      - name: Debug amazonlinux sudo
+        run: |
+          set +e
+          uname -r; docker version --format '{{.Server.Version}} {{.Server.Os}}/{{.Server.Arch}}'; docker info | grep -iE "cgroup|storage|security"
+          docker run -d --name amzn --privileged --cgroupns host -v /sys/fs/cgroup:/sys/fs/cgroup:rw robertdebock/amazonlinux:latest /sbin/init
+          sleep 5
+          docker exec amzn bash -c 'cat /etc/os-release | head -2; date; chage -l root; getent shadow root | cut -d: -f1-9; rpm -q sudo shadow-utils; dnf -y -q install sudo; ls -l /usr/bin/sudo; sudo -n true; echo sudo-rc=$?; cat /etc/pam.d/sudo; ls /etc/pam.d | head -30'
+          docker exec amzn bash -c 'sudo -n -u root id; echo rc=$?; grep -i sudo /var/log/secure 2>/dev/null | tail -3; journalctl -n 5 --no-pager 2>/dev/null | tail -5'
+          docker rm -f amzn
       - name: Test with molecule
         run: |
           cd ansible-role-at
