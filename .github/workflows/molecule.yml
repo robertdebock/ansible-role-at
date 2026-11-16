@@ -71,14 +71,14 @@ jobs:
           set +e
           ls -l /etc/apparmor.d/ | grep -i chkpwd; aa-status 2>&1 | grep -i chkpwd
           echo "=== A: security-opt apparmor=unconfined"
-          docker run -d --name a --privileged --security-opt apparmor=unconfined --cgroupns host -v /sys/fs/cgroup:/sys/fs/cgroup:rw robertdebock/amazonlinux:latest /sbin/init; sleep 4
-          docker exec a bash -c 'dnf -y -q install sudo >/dev/null; sudo -n true; echo A-rc=$?'
-          docker rm -f a >/dev/null
+          docker run -d --name ctra --privileged --security-opt apparmor=unconfined --cgroupns host -v /sys/fs/cgroup:/sys/fs/cgroup:rw robertdebock/amazonlinux:latest /sbin/init; sleep 4
+          docker exec ctra bash -c 'dnf -y -q install sudo >/dev/null; sudo -n true; echo A-rc=$?'
+          docker rm -f ctra >/dev/null
           echo "=== D: disable host profile unix-chkpwd"
           sudo ln -sf /etc/apparmor.d/unix-chkpwd /etc/apparmor.d/disable/ 2>&1; sudo apparmor_parser -R /etc/apparmor.d/unix-chkpwd 2>&1; aa-status 2>&1 | grep -ci chkpwd
-          docker run -d --name d --privileged --cgroupns host -v /sys/fs/cgroup:/sys/fs/cgroup:rw robertdebock/amazonlinux:latest /sbin/init; sleep 4
-          docker exec d bash -c 'dnf -y -q install sudo >/dev/null; sudo -n true; echo D-rc=$?'
-          docker rm -f d >/dev/null
+          docker run -d --name ctrd --privileged --cgroupns host -v /sys/fs/cgroup:/sys/fs/cgroup:rw robertdebock/amazonlinux:latest /sbin/init; sleep 4
+          docker exec ctrd bash -c 'dnf -y -q install sudo >/dev/null; sudo -n true; echo D-rc=$?'
+          docker rm -f ctrd >/dev/null
       - name: Test with molecule
         run: |
           cd ansible-role-at
