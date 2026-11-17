@@ -1,45 +1,28 @@
 ---
+# EXPERIMENT: run molecule on GitLab's shared (instance) Linux amd64 runners with Docker-in-Docker.
 
 variables:
   DEBIAN_FRONTEND: noninteractive
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_TLS_CERTDIR: ""
 
 molecule:
   image: python:3.13
+  services:
+    - docker:dind
   script:
-    - apt-get update -qq
-    - apt-get -y -qq install yamllint docker.io
-    - mkdir -p /etc/docker
-    - echo '{"features":{"buildkit":true},"exec-opts":["native.cgroupdriver=systemd"]}' > /etc/docker/daemon.json
-    - service docker restart || true
     - python -m pip install --upgrade pip
     - pip3 install ansible molecule molecule-plugins[docker] docker
     - pip3 install --upgrade "ansible-core>=2.22"
-    - cd $CI_PROJECT_DIR
+    - uname -m
     - molecule test
   rules:
-    - if: $CI_COMMIT_REF_NAME == "master"
+    - if: $CI_COMMIT_REF_NAME == "experiment/shared-runner"
   parallel:
     matrix:
-      - image: "amazonlinux"
-        tag: "latest"
       - image: "debian"
-        tag: "latest"
-      - image: "debian"
-        tag: "bookworm"
-      - image: "enterpriselinux"
         tag: "latest"
       - image: "fedora"
         tag: "latest"
-      - image: "ubuntu"
-        tag: "jammy"
-      - image: "ubuntu"
+      - image: "alpine"
         tag: "latest"
-
-galaxy:
-  image: python:3.13
-  script:
-    - apt-get update -qq
-    - apt-get -y -qq install ansible-core
-    - ansible-galaxy role import --api-key ${GALAXY_API_KEY} robertdebock ${CI_PROJECT_NAME}
-  rules:
-    - if: $CI_COMMIT_TAG != null
